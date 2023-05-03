@@ -142,3 +142,5 @@ qg_venv/
 test.py
 data/
 .DS_Store
+
+bert-base-cased-qa-evaluator/
