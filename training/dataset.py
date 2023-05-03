@@ -86,7 +86,8 @@ class QAEvalDataset(torch.utils.data.Dataset):
     def shuffle(self, question: str, answer: str) -> Tuple[str, str]:
         shuffled_answer = answer
         while shuffled_answer == answer:
-            shuffled_answer = self.data.sample(1)['answer'].item()
+            # shuffled_answer = self.data.sample(1)['answer'].item()
+            shuffled_answer = self.data.sample(1)['topic'].item()
         return question, shuffled_answer
 
     def corrupt(self, question: str, answer: str) -> Tuple[str, str]:

@@ -28,9 +28,10 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_args()
     tokenizer = AutoTokenizer.from_pretrained(args.qa_eval_model)
-    dataset = datasets.load_dataset("iarfmoose/qa_evaluator")
+    # dataset = datasets.load_dataset("iarfmoose/qa_evaluator")
+    dataset = datasets.load_dataset("ehsanul007/IAmA-qa-evaluator")
     train_set = QAEvalDataset(dataset["train"], args.max_length, tokenizer)
-    valid_set = QAEvalDataset(dataset["validation"], args.max_length, tokenizer)
+    valid_set = QAEvalDataset(dataset["test"], args.max_length, tokenizer)
     model = AutoModelForSequenceClassification.from_pretrained(args.qa_eval_model)
     trainer = Trainer(
         dataloader_workers=args.dataloader_workers,
